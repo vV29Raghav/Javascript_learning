@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            color:white
+        }
       .bg{
         color:aliceblue
       }
     </style>
 </head>
-<body bgcolor="black">
+<body bgcolor="black" color:"white">
     <div class="bg">
         <h1 id="Dom start">
             DOM started
@@ -19,6 +22,82 @@
             Learning is best
         </p>
     </div>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednsday</div>
+        <div class="day">Thrusday</div>
+    </div>
+    
+    <div class="paret">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+    </div>
+
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
     
 </body>
+<script>
+    const parent=document.querySelector('.parent');
+    console.log(parent.children);//return html collection of all child where we can use for loop
+    console.log(parent.firstElementChild);//return first full element of parent
+    const paret=document.querySelector(".paret");
+    console.log(paret.children[0].style.color="red");
+// parent.children[0].style.color="red";
+const dayone=document.querySelector(".day");//we can access parent element using child elemet also
+console.log(dayone);
+console.log(dayone.parentElement);
+console.log(dayone.parentElement.children);
+console.log(dayone.nextElementSibling);//next element
+console.log(paret.childNodes);//it will count all child nodes+text emelemt also like we give space after every day and even hundreds of space between two element counted as 1
+
+
+//create element
+const dd=document.createElement("div");
+console.log(dd);
+dd.className="main";
+dd.id="jbb";
+dd.setAttribute("title","hello");//we prefer this method becuase it directly add attribute to element but innertext will first take reference and then add attribute and ovverride 
+dd.style.color="red";
+dd.innerText="hello";//so instead of this we do
+const addtext=document.createTextNode("hello");
+dd.appendChild(addtext);
+document.body.appendChild(dd);
+
+
+
+function addlang(langname){
+    const li=document.createElement("li");
+    li.innerText=`${langname}`;//here we have to traverse tree evrytime function is called
+    document.querySelector(".language").appendChild(li);
+}
+
+function addoptimiselang(langname){
+    const li=document.createElement("li");
+    li.appendChild(document.createTextNode(langname));//use this approach here we create child and append it
+    document.querySelector(".language").appendChild(li);    
+}
+addlang("python");
+addlang("java");
+addoptimiselang("c++"); 
+
+
+
+//edit 
+const secondlang=document.querySelector(".language li:nth-child(1)");//access nth element  
+secondlang.outerHTML="<li>Mono</li>";
+const newli=document.createElement("li");
+newli.textContent="Monjo";
+secondlang.replaceWith(newli);
+
+//remove
+const lastadd=document.querySelector("li:last-child");
+lastadd.remove();
+    </script>
 </html>
