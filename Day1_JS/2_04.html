@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>
+               <img width="200px" id="owl" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Fwallpaper.html&psig=AOvVaw0Hf2GYeJnDqZXU9hnxqmbC&ust=1743681092378000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJD_57KkuYwDFQAAAAAdAAAAABAE">
+            </li>
+        </ul>
+    </div>
+    <script>
+        document.getElementById('owl').addEventListener('click',function(e){
+            console.log(e);
+        },false);
+        //Event propogation false which is default do if we have event inside other event linstener then first inside work then outside work like bubbling but in event capturing means using true then first outside call then inside
+
+        document.getElementById('owl').addEventListener('click',function(e){
+            console.log(e);
+            e.preventDefault();//it prevent to submit the form 
+            e.stopPropagation();//it will not propogate
+
+        },false);
+        </script>
+    
+</body>
+</html>
