@@ -9,7 +9,7 @@
     <div class="container">
         <ul>
             <li>
-               <img width="200px" id="owl" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Fwallpaper.html&psig=AOvVaw0Hf2GYeJnDqZXU9hnxqmbC&ust=1743681092378000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJD_57KkuYwDFQAAAAAdAAAAABAE">
+               <img width="200px" id="owl" src="https://thumbs.dreamstime.com/z/spring-wallpaper-creating-award-winning-photograph-pic-encapsulates-timeless-beauty-tranquility-nature-351384930.jpg?ct=jpeg">
             </li>
         </ul>
     </div>
@@ -25,6 +25,16 @@
             e.stopPropagation();//it will not propogate
 
         },false);
+
+
+        document.querySelector('#owl').addEventListener('click',function(e){
+            console.log(e.target.name);
+            // if(e.target.tagName==='IMG'){//we do this becuase if we click on list icon then it will delete all ul list
+                let removi=e.target.parentNode;
+            // removi.remove();}
+            //second method to delete
+            removi.parentNode.removeChild(removi);
+        })
         </script>
     
 </body>
