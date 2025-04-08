@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Raghav</h1>
+    <button id="stop">Stop</button>
+    <br>
+    <button id="starting">Starting</button>
+    <button id="stopping">Stopping</button>
+    <div id="se"></div>
+
+    <br>
+    <button id="colorst">StartColorChange</button>
+    <button id="stopcolcor">StopColorChange</button>
+    <script>
+    //   document.querySelector('h1').innerHTML="best"
+    const changeText=function(){
+        document.querySelector('h1').innerHTML="best";
+    }
+    const ChangeMe=setTimeout(changeText,2000);//we can make thing executeable after sometime
+    
+
+    //we store setInterval in variable becuase clearTimeout take reference for setTimeout to clear it
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(ChangeMe);
+        console.log("stopped");
+    })
+
+    const sayDate=function(str){
+        console.log(str,Date.now());
+    }
+    const setI=setInterval(sayDate,1000,'hi');
+    clearInterval(setI);
+    
+
+    //Print couting increase automatically
+    let i=1;
+    let setO=null;
+    const s=document.querySelector('#se');
+    function si(){
+        s.innerHTML+=i+' ';
+        console.log(i++);
+      
+    }
+    
+    
+    const dd=document.querySelector('#starting').addEventListener('click',()=>{
+        if(!setO){
+            setO=setInterval(si,1000);
+        }
+    });
+    
+    document.querySelector('#stopping').addEventListener('click',function(){
+        clearInterval(setO);
+    })
+
+
+
+ 
+    //Random color on body
+    const randomColor=function(){
+        const hex='0123456789ABCDEF';
+        let color='#';
+        for(let i=0;i<6;i++){
+            color+=hex[Math.floor(Math.random()*16)];
+        }
+        return color;
+    };
+    let ii;   
+    const startChangingcolor=function(){
+        ii=setInterval(oo,1000);
+       function oo(){document.body.style.backgroundColor=randomColor();}
+    };
+    const stopChangingcolor=function(){
+        clearInterval(ii);
+        ii=null;
+    };
+    document.querySelector('#colorst').addEventListener('click',startChangingcolor);
+    document.querySelector('#stopcolcor').addEventListener('click',stopChangingcolor);
+
+    //to get the keys press on keyboard
+     window.addEventListener('keydown',(e)=>{
+        console.log(e.key);
+        console.log(e.keyCode);
+        console.log(e.code);
+        //for space we have to manually edit it
+     })
+
+    </script>
+</body>
+</html>
