@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    //0 Unsent : client has been created.open() not called yet
+    // 1 Opened : 1 opened open() has been called.
+    // 2 Header_Recieved : send() has been called and headers and status are available
+    //Loading : Downloading responseText holds partial data.
+    //Done : the opearton are complete
+
+    
+    <script>
+     const requestUrl='https://fake-json-api.mock.beeceptor.com/users'
+     const xhr=new XMLHttpRequest();
+     xhr.open('GET',requestUrl);
+    //  console.log(xhr.readyState);
+
+     xhr.send()
+     xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data=JSON.parse(this.responseText);
+            //this.responseText send data in form of string but we need object so we can convert it in object to get our answer
+            console.log(typeof data);
+            console.log(data);
+            console.log(data[0].name) ;
+        }
+        //console.log is debugger tool and found in V8 engine to run and where javascript inject them ,written in cpp
+     }
+    </script>
+</body>
+</html>
