@@ -7,6 +7,8 @@
 </head>
 <body>
     <button>Button</button>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
 </body>
 <script>
     class React{
@@ -24,5 +26,16 @@
         }
     }
     const app=new React();
+    </script>
+    <script>
+        //Example of closure here
+        function clickHandler(color){
+            // document.body.style.backgroundColor=`${color}`  as this will execute even when call but we want that when we click button then this work so we return another function that shows by closure
+            return function(){
+                document.body.style.backgroundColor=`${color}`
+            }
+        }
+        document.getElementById('orange').onclick=clickHandler("orange");
+        document.getElementById('green').onclick=clickHandler("green");
     </script>
 </html>
