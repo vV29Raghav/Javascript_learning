@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Button</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.libarary="React";
+            this.server="https://localhost:2222";
+
+            document.querySelector('button').addEventListener('click',this.handleClick
+            .bind(this));//we use this because without using bind we can not able to access all things from class like a or server
+        }
+         a="Rga";
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.a); 
+        }
+    }
+    const app=new React();
+    </script>
+</html>
