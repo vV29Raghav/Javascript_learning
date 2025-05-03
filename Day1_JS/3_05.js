@@ -106,3 +106,30 @@ make();
 
 
 
+//node and chrome runs using v8 engine,safri has javascriptcore and all installed and update by jsvu which is javscript version updater
+
+//Array is of two types:Contiguous and Holey(contains holes)
+
+//SMI       (small Integer)
+//Double (float,string,function)
+//Packed Element
+
+const twoarra=[1,2,3,4,5]//PACKED_SMI_ELEMENTS
+twoarra.push(6.0)//PACKED_DOUBLE_ELEMENT
+twoarra.push('7')//PACKED_ELEMENTS
+//If we made packed_smi_elmeent to another then compiler runs diffrenly and even if we delete the thing and make it like original packed_smi then compiler not do compiling according to new beacuse it works on once downgraded then not upgarded
+
+twoarra[10]=11;//HOLEY_ELEMENTS
+//holes are very expensive becuase javascript has prototype nature so it check for outofbound->hasownpropert of array->prototype of that array->prototype of object and hasOwnProperty check is very costly also
+
+
+//SMI>DOUBLE>PACKED_ELEMENTS OPTIMISATION
+//H_SMI>H_DOUBLE>H_PACKED
+
+const arrf=new Array(3)
+//created 3 holey elemnet array
+arrf[0]='1'
+
+const aa=[]
+aa.push('3');
+arrf.push('2');//it help to create packed element instead of holey so it somewhat optimised
